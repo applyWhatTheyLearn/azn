@@ -1,0 +1,70 @@
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="../css/css.css" rel="stylesheet" type="text/css">
+<title>修改文章</title>
+</head>
+<script src="../../_inc/birthday.js"></script>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<div align="center"> 
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr bgcolor="#999999"> 
+      <td height="1" valign="top"></td>
+    </tr>
+    <tr bgcolor="#E4E4E4"> 
+      <td height="246" valign="top" bgcolor="#E4E4E4"> 
+        <div align="left">
+          <form action="dynamic_Modi_Submit.html" method="post" name="sample" id="sample">
+            <table width="770" border="0" cellspacing="1" cellpadding="0">
+              <tr> 
+                <td height="21" bgcolor="#996600">&nbsp;<font color="#FFFFFF">修改文章</font></td>
+                <td width="488" height="21" bgcolor="#FFFFFF">&nbsp;</td>
+                <td width="149" align="right" bgcolor="#FFFFFF"><a href="area_dynamic_list.html">返回区域新闻列表</a></td>
+              </tr>
+              <tr> 
+                <td height="18" colspan="3"> <div align="right"></div></td>
+              </tr>
+              <tr> 
+                <td width="129" height="1" bgcolor="#999999"></td>
+                <td height="1" colspan="2" bgcolor="#999999"></td>
+              </tr>
+              <tr>
+                <td height="22" bgcolor="F1F0F1">&nbsp;文章标题：</td>
+                <td colspan="2" bgcolor="F1F0F1"><input name="w_title" type="text" id="w_title" value="<%=w_title%>" size="80" maxlength="50"></td>
+              </tr>
+              <tr>
+                <td height="29" valign="top" bgcolor="F1F0F1"><font size="2">&nbsp;内容：</font></td>
+                <td height="200" colspan="2" valign="top" bgcolor="F1F0F1">在线编辑框</td>
+              </tr>
+              <tr>
+                <td height="25" bgcolor="F1F0F1">&nbsp;排序状态：</td>
+                <td height="25" colspan="2" bgcolor="F1F0F1"><input name="w_sort" type="text" id="w_sort" value="<%=w_sort%>" size="20" maxlength="6"></td>
+              </tr>
+              <tr> 
+                <td height="23" bgcolor="F1F0F1">&nbsp;显示状态：</td>
+                <td height="23" colspan="2" bgcolor="F1F0F1"><font size="2"> &nbsp;已开通 
+                  <input name="w_views" type="radio" value="已开通" checked="CHECKED">
+                  待审核 
+                  <input type="radio" name="w_views" value="待审核">
+                </font></td>
+              </tr>
+              <tr> 
+                <td height="46" bgcolor="F1F0F1">&nbsp;</td>
+                <td height="46" colspan="2" bgcolor="F1F0F1"> <input type="submit" name="Submit" value="修改"> 
+                <input type="button" name="Submit3" value="返回信息列表" onClick="location='area_dynamic_list.html'">                </td>
+              </tr>
+              <tr> 
+                <td height="21" colspan="3" valign="top">&nbsp;</td>
+              </tr>
+            </table>
+          </form>
+        </div></td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>
+
+ 

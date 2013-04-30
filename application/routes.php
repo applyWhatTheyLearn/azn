@@ -1,0 +1,290 @@
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Application Routes
+|--------------------------------------------------------------------------
+|
+| Simply tell Laravel the HTTP verbs and URIs it should respond to. It is a
+| breeze to setup your application using Laravel's RESTful routing and it
+| is perfectly suited for building large applications and simple APIs.
+|
+| Let's respond to a simple GET request to http://example.com/hello:
+|
+|		Route::get('hello', function()
+|		{
+|			return 'Hello World!';
+|		});
+|
+| You can even respond to more than one URI:
+|
+|		Route::post(array('hello', 'world'), function()
+|		{
+|			return 'Hello World!';
+|		});
+|
+| It's easy to allow URI wildcards using (:num) or (:any):
+|
+|		Route::put('hello/(:any)', function($name)
+|		{
+|			return "Welcome, $name.";
+|		});
+|
+*/
+
+Route::get('/', function()
+           {
+               return View::make('home.index');
+           });
+Route::get('authors', array('uses'=>'authors@index'));
+
+Route::get('admin',array('before' => 'auth','do'=> function(){ return View::make('admin.managelist');}));
+Route::get('manageleft', function(){ return View::make('admin.manageleft');});
+Route::get('managedetail', function(){ return View::make('admin.managedetail');});
+
+Route::get('login', function(){return View::make('admin.login');});
+Route::post('login', array('uses'=>'users@login'));
+Route::get('logout', function() {
+    Auth::logout();
+    return Redirect::to('admin');
+});
+
+Route::group(array('before'=>'auth'),function(){
+    Route::get('fileDel', 'utils@fileDel');
+    /* area */
+    Route::get('area/area_list.html', 'areas@list');
+    Route::get('area/area_add.html', 'areas@add');
+    Route::post('area/area_add.html', 'areas@add');
+    Route::get('area/area_modi.html', 'areas@modi');
+    Route::post('area/area_modi.html', 'areas@modi');
+    Route::any('area/area_del.html', 'areas@del');
+
+    /* gong-gao */
+    Route::get('gonggao/gonggao_list.html', 'gonggaos@list');
+    Route::get('gonggao/gonggao_add.html', 'gonggaos@add');
+    Route::post('gonggao/gonggao_add.html', 'gonggaos@add');
+    Route::get('gonggao/gonggao_modi.html', 'gonggaos@modi');
+    Route::post('gonggao/gonggao_modi.html', 'gonggaos@modi');
+    Route::any('gonggao/gonggao_del.html', 'gonggaos@del');
+    Route::get('gonggao/gonggao_detail.html', 'gonggaos@detail');
+      /* area_gonggao */
+    Route::get('gonggao/area_gonggao_list.html', 'area_gonggaos@list');
+    Route::get('gonggao/area_gonggao_add.html', 'area_gonggaos@add');
+    Route::post('gonggao/area_gonggao_add.html', 'area_gonggaos@add');
+    Route::get('gonggao/area_gonggao_modi.html', 'area_gonggaos@modi');
+    Route::post('gonggao/area_gonggao_modi.html', 'area_gonggaos@modi');
+    Route::any('gonggao/area_gonggao_del.html', 'area_gonggaos@del');
+    Route::get('gonggao/area_gonggao_detail.html', 'area_gonggaos@detail');
+    
+    /* 关于我们 */
+    Route::get('aboutus/au_door.html', 'aboutus@door');
+    Route::get('aboutus/auClass_List.html', 'aboutus@class_list');
+    Route::get('aboutus/au_temp.html', 'aboutus@temp');
+    Route::get('aboutus/auClass_managelist.html', 'aboutus@class_managelist');
+    Route::get('aboutus/auClass_add.html', 'aboutus@class_add');
+    Route::post('aboutus/auClass_add.html', 'aboutus@class_add');
+    Route::get('aboutus/auClass_modi.html', 'aboutus@class_modi');
+    Route::post('aboutus/auClass_modi.html', 'aboutus@class_modi');
+    Route::any('aboutus/auClass_del.html', 'aboutus@class_del');
+    Route::get('aboutus/au_list.html', 'aboutus@list');
+    Route::get('aboutus/au_add.html', 'aboutus@add');
+    Route::post('aboutus/au_add.html', 'aboutus@add');
+    Route::get('aboutus/au_modi.html', 'aboutus@modi');
+    Route::post('aboutus/au_modi.html', 'aboutus@modi');
+    Route::get('aboutus/au_detail.html', 'aboutus@detail');
+    Route::any('aboutus/au_del.html', 'aboutus@del');
+    
+    /* 公司新闻 */
+    Route::get('gonggao/gonggao_list.html', 'gonggaos@list');
+    Route::get('gonggao/gonggao_add.html', 'gonggaos@add');
+    Route::post('gonggao/gonggao_add.html', 'gonggaos@add');
+    Route::get('gonggao/gonggao_modi.html', 'gonggaos@modi');
+    Route::post('gonggao/gonggao_modi.html', 'gonggaos@modi');
+    Route::any('gonggao/gonggao_del.html', 'gonggaos@del');
+    Route::get('gonggao/gonggao_detail.html', 'gonggaos@detail');
+      /* 区域新闻 */
+    Route::get('gonggao/area_gonggao_list.html', 'area_gonggaos@list');
+    Route::get('gonggao/area_gonggao_add.html', 'area_gonggaos@add');
+    Route::post('gonggao/area_gonggao_add.html', 'area_gonggaos@add');
+    Route::get('gonggao/area_gonggao_modi.html', 'area_gonggaos@modi');
+    Route::post('gonggao/area_gonggao_modi.html', 'area_gonggaos@modi');
+    Route::any('gonggao/area_gonggao_del.html', 'area_gonggaos@del');
+    Route::get('gonggao/area_gonggao_detail.html', 'area_gonggaos@detail');
+
+    /* 媒体链接 */
+    Route::get('medialink/media_list.html', 'medialink@list');
+    Route::get('medialink/media_add.html', 'medialink@add');
+    Route::post('medialink/media_add.html', 'medialink@add');
+    Route::get('medialink/media_modi.html', 'medialink@modi');
+    Route::post('medialink/media_modi.html', 'medialink@modi');
+    Route::any('medialink/media_del.html', 'medialink@del');
+
+    /* 视频链接 */
+    Route::get('videolink/video_list.html', 'videolink@list');
+    Route::get('videolink/video_add.html', 'videolink@add');
+    Route::post('videolink/video_add.html', 'videolink@add');
+    Route::get('videolink/video_modi.html', 'videolink@modi');
+    Route::post('videolink/video_modi.html', 'videolink@modi');
+    Route::any('videolink/video_del.html', 'videolink@del');
+    
+    /* 加盟信息 */
+    Route::get('join/join_modi.html', 'join@modi');
+    Route::post('join/join_modi.html', 'join@modi');
+
+    /* 产品管理 */
+    Route::get('product/proclass_door.html', 'product@door');
+    Route::get('product/area_list.html', 'product@area');
+    Route::get('product/proclass_list.html', 'product@proclass_list');
+    Route::get('product/pro_temp.html', 'product@temp');
+    Route::get('product/proClass_managelist.html', 'product@class_managelist');
+    Route::get('product/proClass_add.html', 'product@class_add');
+    Route::post('product/proClass_add.html', 'product@class_add');
+    Route::get('product/proClass_modi.html', 'product@class_modi');
+    Route::post('product/proClass_modi.html', 'product@class_modi');
+    Route::any('product/proClass_del.html', 'product@class_del');
+
+    Route::get('product/pro_list.html', 'product@list');
+    Route::get('product/pro_add.html', 'product@add');
+    Route::post('product/pro_add.html', 'product@add');
+    Route::get('product/pro_modi.html', 'product@modi');
+    Route::post('product/pro_modi.html', 'product@modi');
+    Route::get('product/pro_detail.html', 'product@detail');
+    Route::any('product/pro_del.html', 'product@del');
+
+    /* 会员管理 */
+    Route::get('member/member_door.html', 'member@door');
+    Route::get('member/memberClass_List.html', 'member@class_list');
+    Route::get('member/member_temp.html', 'member@temp');
+    Route::get('member/memberClass_managelist.html', 'member@class_managelist');
+    Route::get('member/memberClass_add.html', 'member@class_add');
+    Route::post('member/memberClass_add.html', 'member@class_add');
+    Route::get('member/memberClass_modi.html', 'member@class_modi');
+    Route::post('member/memberClass_modi.html', 'member@class_modi');
+    Route::any('member/memberClass_del.html', 'member@class_del');
+
+    Route::get('member/member_list.html', 'member@list');
+    Route::get('member/member_add.html', 'member@add');
+    Route::post('member/member_add.html', 'member@add');
+    Route::get('member/member_modi.html', 'member@modi');
+    Route::post('member/member_modi.html', 'member@modi');
+    Route::get('member/member_detail.html', 'member@detail');
+    Route::any('member/member_del.html', 'member@del');
+
+     /* 帮助 */
+    Route::get('help/help_door.html', 'help@door');
+    Route::get('help/helpClass_List.html', 'help@class_list');
+    Route::get('help/help_temp.html', 'help@temp');
+    Route::get('help/helpClass_managelist.html', 'help@class_managelist');
+    Route::get('help/helpClass_add.html', 'help@class_add');
+    Route::post('help/helpClass_add.html', 'help@class_add');
+    Route::get('help/helpClass_modi.html', 'help@class_modi');
+    Route::post('help/helpClass_modi.html', 'help@class_modi');
+    Route::any('help/helpClass_del.html', 'help@class_del');
+
+    Route::get('help/help_list.html', 'help@list');
+    Route::get('help/help_add.html', 'help@add');
+    Route::post('help/help_add.html', 'help@add');
+    Route::get('help/help_modi.html', 'help@modi');
+    Route::post('help/help_modi.html', 'help@modi');
+    Route::get('help/help_detail.html', 'help@detail');
+    Route::any('help/help_del.html', 'help@del');
+
+     /* contact */
+    Route::get('contact/contact_list.html', 'contact@list');
+    Route::get('contact/contact_add.html', 'contact@add');
+    Route::post('contact/contact_add.html', 'contact@add');
+    Route::get('contact/contact_modi.html', 'contact@modi');
+    Route::post('contact/contact_modi.html', 'contact@modi');
+    Route::get('contact/contact_detail.html', 'contact@detail');
+    Route::any('contact/contact_del.html', 'contact@del');
+ 
+    /* 友情链接 */
+    Route::get('link/link_list.html', 'link@list');
+    Route::get('link/link_add.html', 'link@add');
+    Route::post('link/link_add.html', 'link@add');
+    Route::get('link/link_modi.html', 'link@modi');
+    Route::post('link/link_modi.html', 'link@modi');
+    Route::any('link/link_del.html', 'link@del');
+
+   /* 法律声明 */
+    Route::get('law/law_modi.html', 'law@modi');
+    Route::post('law/law_modi.html', 'law@modi');
+
+    
+
+    
+   
+ });
+
+/*
+|--------------------------------------------------------------------------
+| Application 404 & 500 Error Handlers
+|--------------------------------------------------------------------------
+|
+| To centralize and simplify 404 handling, Laravel uses an awesome event
+| system to retrieve the response. Feel free to modify this function to
+| your tastes and the needs of your application.
+|
+| Similarly, we use an event to handle the display of 500 level errors
+| within the application. These errors are fired when there is an
+| uncaught exception thrown in the application.
+|
+*/
+
+Event::listen('404', function()
+{
+	return Response::error('404');
+});
+
+Event::listen('500', function()
+{
+	return Response::error('500');
+});
+
+/*
+|--------------------------------------------------------------------------
+| Route Filters
+|--------------------------------------------------------------------------
+|
+| Filters provide a convenient method for attaching functionality to your
+| routes. The built-in before and after filters are called before and
+| after every request to your application, and you may even create
+| other filters that can be attached to individual routes.
+|
+| Let's walk through an example...
+|
+| First, define a filter:
+|
+|		Route::filter('filter', function()
+|		{
+|			return 'Filtered!';
+|		});
+|
+| Next, attach the filter to a route:
+|
+|		Route::get('/', array('before' => 'filter', function()
+|		{
+|			return 'Hello World!';
+|		}));
+|
+*/
+
+Route::filter('before', function()
+{
+	// Do stuff before every request to your application...
+});
+
+Route::filter('after', function($response)
+{
+	// Do stuff after every request to your application...
+});
+
+Route::filter('csrf', function()
+{
+	if (Request::forged()) return Response::error('500');
+});
+
+Route::filter('auth', function()
+{
+	if (Auth::guest()) return Redirect::to('login');
+});

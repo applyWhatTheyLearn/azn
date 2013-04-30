@@ -1,0 +1,82 @@
+/* CSS Document */
+
+#menu{
+	clear:left;
+	float:left;
+	border: 1px solid #e1e1e1;
+	width:180;
+	height:auto;
+	margin-left: 15px; 
+	margin-top: 15px;
+	background:url(../images/left_menu_bg_1.gif) no-repeat;
+	background-position: 20% 98%;
+    	
+	}
+	
+#menu ul  {
+    width:160px;
+    height:auto;
+	margin: 10 5 10 10;
+	padding: 0;
+	list-style-type: none;
+}
+
+
+#menu li {
+	font-family: "ºÚÌå";
+	font-size: 1em;
+	font-weight: bold;
+    border-bottom:1px dashed #d6c08e;
+	
+}
+#menu li a {
+    display:block;
+	padding: 0px 0px;
+    color:#010101;
+    text-indent:26px;
+    line-height:30px;
+	text-decoration: none;
+	background-image: url(../images/arrow_2.gif);
+	background-repeat: no-repeat;
+	background-position: 10px 13px;	
+}
+#menu li a:hover {
+    
+	color:#00a0e0;
+	width: 160px;
+	background-color: #fdfae9;
+	text-decoration: none;
+	background-image: url(../images/arrow_1.gif);
+	background-repeat: no-repeat;
+	background-position: 120px 9px;	
+	
+}
+#menu ul ul{
+	clear:left;
+	float:left;
+	margin:0;
+	
+	}
+
+#menu ul ul li { margin: 0 0 0 0; }
+
+#menu ul ul a
+{
+	display: block;
+	padding: 0px 0px 0px 15px;
+	width: 160px;
+	color: #000;
+	line-height:25px;
+	text-decoration: none;
+	font-weight: normal;
+	background: 30px 10px url(../images/arrow_4.gif) no-repeat;
+}
+
+#menu ul ul a:hover
+{
+    color:#00a0e0;
+	width: 160px;
+	text-decoration:none;
+	background:#f1f2f2 url(../images/arrow_3.gif) 30px 10px  no-repeat;
+	
+}
