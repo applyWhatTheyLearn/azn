@@ -37,28 +37,11 @@ body {
     </tr>
   </table>
   <table width="180" border="0" align="center" cellpadding="1" cellspacing="1">
+    @foreach($classes as $class)
     <tr>
-      <td height="22" background="images/line-2.gif" bgcolor="#EEEEEE">&nbsp;<font color="#999999">■</font>&nbsp;<a href="member_list.html" target="window_main">【北京】用户名</a></td>
+      <td height="22" background="images/line-2.gif" bgcolor="#EEEEEE">&nbsp;<font color="#999999">■</font>&nbsp;<a href="member_list.html?fid={{$class->meid}}" target="window_main">【{{$class->areaname}}】{{$class->username}}</a></td>
     </tr>
-     <tr>
-      <td height="22" background="images/line-2.gif" bgcolor="#EEEEEE">&nbsp;<font color="#999999">■</font>&nbsp;<a href="member_list.html" target="window_main">【上海】用户名</a></td>
-    </tr>   
-     <tr>
-      <td height="22" background="images/line-2.gif" bgcolor="#EEEEEE">&nbsp;<font color="#999999">■</font>&nbsp;<a href="member_list.html" target="window_main">【深圳】用户名</a></td>
-    </tr>   
-     <tr>
-      <td height="22" background="images/line-2.gif" bgcolor="#EEEEEE">&nbsp;<font color="#999999">■</font>&nbsp;<a href="member_list.html" target="window_main">【广州】用户名</a></td>
-    </tr>   
-     <tr>
-      <td height="22" background="images/line-2.gif" bgcolor="#EEEEEE">&nbsp;<font color="#999999">■</font>&nbsp;<a href="member_list.html" target="window_main">【武汉】用户名</a></td>
-    </tr>   
-    <tr>
-      <td height="22" background="images/line-2.gif" bgcolor="#EEEEEE">&nbsp;<font color="#999999">■</font>&nbsp;<a href="member_list.html" target="window_main">【长沙】用户名</a></td>
-    </tr>    
-    <tr>
-      <td height="22" background="images/line-2.gif" bgcolor="#EEEEEE">&nbsp;<font color="#999999">■</font>&nbsp;<a href="member_list.html" target="window_main">【重庆】用户名</a></td>
-    </tr>    
-    
+    @endforeach
   </table>
   <table width="180" border="0" align="center" cellpadding="2">
     <tr>

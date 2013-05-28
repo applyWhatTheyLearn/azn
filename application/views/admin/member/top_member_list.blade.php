@@ -1,5 +1,3 @@
-
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -26,7 +24,7 @@
                 <input name="textfield" type="text" class="text" id="textfield" value="会员号">                  
                 <input name="button" type="submit" class="SubmitButtom" id="button" value="搜索">                
                 &nbsp;</td>
-                <td width="91" align="right" bgcolor="#FFFFFF"><a href="top_member_add.html">添加区域会员</a></td>
+                <td width="91" align="right" bgcolor="#FFFFFF"><a href="top_member_add.html?page={{$page}}">添加区域会员</a></td>
               </form>
             </tr>
             <tr>
@@ -49,22 +47,27 @@
               <td width="62" bgcolor="#999999"><div align="center"><font color="#FFFFFF">修改密码</font></div></td>
               <td width="32" bgcolor="#999999"><div align="center"><font color="#FFFFFF">删除</font></div></td>
             </tr>
+            <?php $no = 1 ?>
+            @foreach($classes->results as $class)
             <tr>
-              <td valign="middle" bgcolor="F1F0F1">&nbsp;<font color="#993300">1、</font></td>
-              <td height="18" valign="middle" bgcolor="F1F0F1">&nbsp;北京北京北京</td>
-              <td height="18" valign="middle" bgcolor="F1F0F1">&nbsp;<a href="top_member_detail.html" class="member_link">123456789</a></td>
-              <td height="18" valign="middle" bgcolor="F1F0F1"><font color="#333333" size="2">&nbsp;<a href="top_member_modi.html">会员名称会员会员</a></font></td>
-              <td height="18" valign="middle" bgcolor="F1F0F1">&nbsp;12345678901</td>
-              <td height="18" valign="middle" bgcolor="F1F0F1">&nbsp;0</td>
-              <td height="18" valign="middle" bgcolor="F1F0F1"><div align="center">显示</div></td>
-              <td valign="middle" bgcolor="F1F0F1"><div align="center"><a href="top_member_pass_modi.html">修改密码</a></div></td>
-              <td height="18" valign="middle" bgcolor="F1F0F1"><div align="center"><a href="top_member_del.html">删除</a></div></td>
+              <td valign="middle" bgcolor="F1F0F1">&nbsp;<font color="#993300">{{$no++}}、</font></td>
+              <td height="18" valign="middle" bgcolor="F1F0F1">&nbsp;{{$class->areaname}}</td>
+              <td height="18" valign="middle" bgcolor="F1F0F1">&nbsp;<a href="top_member_detail.html?id={{$class->meid}}&page={{$page}}" class="member_link">{{$class->cnum}}</a></td>
+              <td height="18" valign="middle" bgcolor="F1F0F1"><font color="#333333" size="2">&nbsp;<a href="top_member_modi.html?id={{$class->meid}}&page={{$page}}">{{$class->username}}</a></font></td>
+              <td height="18" valign="middle" bgcolor="F1F0F1">&nbsp;{{$class->mobile}}</td>
+              <td height="18" valign="middle" bgcolor="F1F0F1">&nbsp;{{$class->sort}}</td>
+              <td height="18" valign="middle" bgcolor="F1F0F1"><div align="center">{{$class->views}}</div></td>
+              <td valign="middle" bgcolor="F1F0F1"><div align="center"><a href="top_member_pass_modi.html?id={{$class->meid}}&page={{$page}}">修改密码</a></div></td>
+              <td height="18" valign="middle" bgcolor="F1F0F1"><div align="center"><a href="top_member_del.html?id={{$class->meid}}&page={{$page}}">删除</a></div></td>
             </tr>
             <tr>
               <td height="1" colspan="13" bgcolor="#999999"></td>
             </tr>
+            @endforeach
             <tr>
-              <td height="21" colspan="13" align="right" valign="middle"><font color="#333333" size="2">换页 <a href="#">&lt;&lt;</a></font>&nbsp;<font color="#333333" size="2"><a href="#">首页</a></font> &nbsp;&nbsp; <a href="#">1</a>、<strong><a href="#">2</a></strong>、<a href="#">3</a>、<a href="#">4</a> &nbsp;&nbsp;<font color="#333333"><a href="#">尾页</a> <a href="#">&gt;&gt;</a></font></td>
+              <td height="21" colspan="13" align="right" valign="middle">
+                {{$classes->links()}}
+              </td>
             </tr>
         </table></td>
     </tr>

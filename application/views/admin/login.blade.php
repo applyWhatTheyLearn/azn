@@ -8,7 +8,7 @@
 
 <body>
 <div align="center">
-  <form action="login" method="post" name="form1" target="_self">
+  <form action="login.html" method="post" name="form1" target="_self">
     <p>
      @if (Session::has('login_errors'))
      <font color="#FF0000" size="2">用户名或密码错误</font>

@@ -7,8 +7,8 @@
 </head>
 
 <frameset rows="*" cols="214,*" framespacing="1" frameborder="no" border="1">
-  <frame src="manageleft" name="leftFrame" scrolling="auto">
-  <frame src="managedetail" name="mainFrame">
+  <frame src="manageleft.html" name="leftFrame" scrolling="auto">
+  <frame src="managedetail.html" name="mainFrame">
 </frameset><noframes></noframes>
 <body>
 

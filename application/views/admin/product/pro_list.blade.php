@@ -48,15 +48,15 @@
                    @foreach($details->results as $detail)
                 <tr>
                     <td valign="top" bgcolor="F1F0F1"><font size="2">&nbsp;<font color="#993300">{{$no++}}</font>、</font></td>
-                    <td valign="bottom" bgcolor="F1F0F1">&nbsp;<a href="pro_detail.html?l_id={{$detail->l_id}}&page={{$page}}">{{$detail->l_name}}</a> &nbsp;</td>
-                    <td align="center" valign="middle" bgcolor="F1F0F1"><a href="package.html">套餐</a></td>
+                    <td valign="bottom" bgcolor="F1F0F1">&nbsp;<a href="pro_detail.html?w_classid={{$class->l_id}}&areaid={{$area->w_id}}&l_id={{$detail->l_id}}&page={{$page}}">{{$detail->l_name}}</a> &nbsp;</td>
+                    <td align="center" valign="middle" bgcolor="F1F0F1"><a href="package.html?w_classid={{$class->l_id}}&l_id={{$detail->l_id}}&areaid={{$area->w_id}}&page={{$page}}">套餐</a></td>
                     <td bgcolor="F1F0F1"><div align="center">{{$detail->l_tuijian}}</div></td>
                     <td bgcolor="F1F0F1"><div align="center"><font>{{$detail->l_sort}}</font></div></td>
                     <td bgcolor="F1F0F1">
                         <div align="center"><font color="#ff0000">{{$detail->l_views}}</font></div></td>
-                    <td bgcolor="F1F0F1"><div align="center"><a href="#" onClick="MM_openBrWindow('pro_pic_list.html?l_classid=<%=l_id%>','','scrollbars=yes,resizable=yes,width=780,height=400')">图</a></div></td>
-                    <td bgcolor="F1F0F1"> <div align="center"><a href="pro_modi.html?l_id={{$detail->l_id}}&page={{$page}}"><font size="2">改</font></a></div></td>
-                    <td bgcolor="F1F0F1"> <div align="center"><a href="Pro_del.html?l_id={{$detail->l_id}}&page={{$page}}">删</a></div></td>
+                    <td bgcolor="F1F0F1"><div align="center"><a href="#" onClick="MM_openBrWindow('pro_pic_list.html?l_classid={{$detail->l_id}}&page={{$page}}','','scrollbars=yes,resizable=yes,width=780,height=400')">图</a></div></td>
+                    <td bgcolor="F1F0F1"> <div align="center"><a href="pro_modi.html?w_classid={{$class->l_id}}&areaid={{$area->w_id}}&l_id={{$detail->l_id}}&page={{$page}}"><font size="2">改</font></a></div></td>
+                    <td bgcolor="F1F0F1"> <div align="center"><a href="pro_del.html?w_classid={{$class->l_id}}&areaid={{$area->w_id}}&l_id={{$detail->l_id}}&page={{$page}}">删</a></div></td>
                 </tr>
                 <tr>
                     <td height="1" colspan="16" bgcolor="#999999"></td>

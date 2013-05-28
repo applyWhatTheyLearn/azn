@@ -183,10 +183,10 @@ class Paginator {
 			$links = $this->slider($adjacent);
 		}
 
-		//$content = '<ul>' . $this->previous('上一页') . $links . $this->next('下一页') . '</ul>';
+		$content = '<ul>' . $this->previous('上一页') . $links . $this->next('下一页') . '</ul>';
 
 		//return '<div class="pagination">'.$content.'</div>';
-		$content = '<ul>' . $this->previous('<<') . $links . $this->next('>>') . '</ul>';
+		//$content = '<ul>' . $this->previous('<<') . $links . $this->next('>>') . '</ul>';
 		return '<div class="pagination">'.$content.'</div>';
         
 	}

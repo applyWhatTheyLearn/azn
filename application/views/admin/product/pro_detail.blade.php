@@ -24,7 +24,7 @@
 <tr>
     <td height="21" bgcolor="#A24E12">&nbsp;<font color="#FFFFFF">商品信息</font></td>
     <td width="552" height="21" bgcolor="#FFFFFF">&nbsp;</td>
-    <td width="74" bgcolor="#FFFFFF"><div align="center"><a href="pro_list.html?areaid={{$area->w_id}}&level=3&page={{$page}}">返回前页</a></div></td>
+    <td width="74" bgcolor="#FFFFFF"><div align="center"><a href="pro_list.html?w_classid={{$w_classid}}&areaid={{$area->w_id}}&level=3&page={{$page}}">返回前页</a></div></td>
 </tr>
 <tr>
     <td height="18" colspan="3"> <div align="right"></div></td>
@@ -35,7 +35,7 @@
 </tr>
 <tr>
     <td height="22" bgcolor="F1F0F1"><font size="2">&nbsp;商品编号：</font></td>
-    <td colspan="2" bgcolor="F1F0F1">{{$l_number}}</td>
+    <td colspan="2" bgcolor="F1F0F1">{{$detail->l_number}}</td>
 </tr>
 <tr>
     <td height="22" bgcolor="F1F0F1"><font size="2">&nbsp;商品名称：</font></td>
@@ -51,7 +51,7 @@
 </tr>
 <tr>
     <td height="23" valign="top" bgcolor="F1F0F1"><font size="2">&nbsp;规格参数：</font></td>
-    <td height="100" colspan="2" valign="top" bgcolor="F1F0F1">{{$detail->l_specifications'}}</td>
+    <td height="100" colspan="2" valign="top" bgcolor="F1F0F1">{{$detail->l_specifications}}</td>
 </tr>
 <tr>
     <td height="23" bgcolor="F1F0F1"><font size="2">&nbsp;市场价：</font></td>
@@ -86,160 +86,24 @@
     <td height="23" bgcolor="#FFFFCC"><strong>&nbsp;附加分类信息：</strong></td>
     <td height="23" colspan="2" bgcolor="#FFFFCC">&nbsp;</td>
 </tr>
+@foreach($classes as $k=>$v)
+@if(stristr($k,'l_class')>-1 and !is_null($v))
 <tr>
-    <td height="23" valign="top" bgcolor="#FFFFCC"><strong>&nbsp;</strong>分类标题1：</td>
-    <td height="23" colspan="2" valign="top" bgcolor="#FFFFCC"><input name="l_class1" type="radio" value="内容1" checked>
-        内容1
-        <input type="radio" name="l_class1" value="内容2">
-        内容2
-        <input type="radio" name="l_class1" value="内容3">
-        内容3
-        <input type="radio" name="l_class1" value="内容4">
-        内容4
-        <input type="radio" name="l_class1" value="内容5">
-        内容5
-        <input type="radio" name="l_class1" value="内容6">
-        内容6</td>
+    <td height="23" valign="top" bgcolor="#FFFFCC"><strong>&nbsp;</strong>{{$k}}：</td>
+    <td height="23" colspan="2" valign="top" bgcolor="#FFFFCC">
+      <input name="{{$k}}" type="radio" value="{{$v}}" checked>
+        {{$v}}
+        
 </tr>
-<tr>
-    <td height="23" valign="top" bgcolor="#FFFFCC"><strong>&nbsp;</strong>分类标题2：</td>
-    <td height="23" colspan="2" valign="top" bgcolor="#FFFFCC"><input name="l_class2" type="radio" value="内容1" checked>
-        内容1
-        <input type="radio" name="l_class2" value="内容2">
-        内容2
-        <input type="radio" name="l_class2" value="内容3">
-        内容3
-        <input type="radio" name="l_class2" value="内容4">
-        内容4
-        <input type="radio" name="l_class2" value="内容5">
-        内容5
-        <input type="radio" name="l_class2" value="内容6">
-        内容6</td>
-</tr>
-<tr>
-    <td height="23" valign="top" bgcolor="#FFFFCC"><strong>&nbsp;</strong>分类标题3：</td>
-    <td height="23" colspan="2" valign="top" bgcolor="#FFFFCC"><input name="l_class3" type="radio"  value="内容1" checked>
-        内容1
-        <input type="radio" name="l_class3" value="内容2">
-        内容2
-        <input type="radio" name="l_class3" value="内容3">
-        内容3
-        <input type="radio" name="l_class3" value="内容4">
-        内容4
-        <input type="radio" name="l_class3" value="内容5">
-        内容5
-        <input type="radio" name="l_class3" value="内容6">
-        内容6</td>
-</tr>
-<tr>
-    <td height="23" valign="top" bgcolor="#FFFFCC"><strong>&nbsp;</strong>分类标题4：</td>
-    <td height="23" colspan="2" valign="top" bgcolor="#FFFFCC"><input name="l_class4" type="radio" value="内容1" checked>
-        内容1
-        <input type="radio" name="l_class4" value="内容2">
-        内容2
-        <input type="radio" name="l_class4" value="内容3">
-        内容3
-        <input type="radio" name="l_class4" value="内容4">
-        内容4
-        <input type="radio" name="l_class4" value="内容5">
-        内容5
-        <input type="radio" name="l_class4" value="内容6">
-        内容6</td>
-</tr>
-<tr>
-    <td height="23" valign="top" bgcolor="#FFFFCC"><strong>&nbsp;</strong>分类标题5：</td>
-    <td height="23" colspan="2" valign="top" bgcolor="#FFFFCC"><input name="l_class5" type="radio" value="内容1" checked>
-        内容1
-        <input type="radio" name="l_class5" value="内容2">
-        内容2
-        <input type="radio" name="l_class5" value="内容3">
-        内容3
-        <input type="radio" name="l_class5" value="内容4">
-        内容4
-        <input type="radio" name="l_class5" value="内容5">
-        内容5
-        <input type="radio" name="l_class5" value="内容6">
-        内容6</td>
-</tr>
-<tr>
-    <td height="23" valign="top" bgcolor="#FFFFCC"><strong>&nbsp;</strong>分类标题6：</td>
-    <td height="23" colspan="2" valign="top" bgcolor="#FFFFCC"><input name="l_class6" type="radio" value="内容1" checked>
-        内容1
-        <input type="radio" name="l_class6" value="内容2">
-        内容2
-        <input type="radio" name="l_class6" value="内容3">
-        内容3
-        <input type="radio" name="l_class6" value="内容4">
-        内容4
-        <input type="radio" name="l_class6" value="内容5">
-        内容5
-        <input type="radio" name="l_class6" value="内容6">
-        内容6</td>
-</tr>
-<tr>
-    <td height="23" valign="top" bgcolor="#FFFFCC"><strong>&nbsp;</strong>分类标题7：</td>
-    <td height="23" colspan="2" valign="top" bgcolor="#FFFFCC"><input name="l_class7" type="radio" value="内容1" checked>
-        内容1
-        <input type="radio" name="l_class7" value="内容2">
-        内容2
-        <input type="radio" name="l_class7" value="内容3">
-        内容3
-        <input type="radio" name="l_class7" value="内容4">
-        内容4
-        <input type="radio" name="l_class7" value="内容5">
-        内容5
-        <input type="radio" name="l_class7" value="内容6">
-        内容6</td>
-</tr>
-<tr>
-    <td height="23" valign="top" bgcolor="#FFFFCC"><strong>&nbsp;</strong>分类标题8：</td>
-    <td height="23" colspan="2" valign="top" bgcolor="#FFFFCC"><input name="l_class8" type="radio" value="内容1" checked>
-        内容1
-        <input type="radio" name="l_class8" value="内容2">
-        内容2
-        <input type="radio" name="l_class8" value="内容3">
-        内容3
-        <input type="radio" name="l_class8" value="内容4">
-        内容4
-        <input type="radio" name="l_class8" value="内容5">
-        内容5
-        <input type="radio" name="l_class8" value="内容6">
-        内容6</td>
-</tr>
-<tr>
-    <td height="23" valign="top" bgcolor="#FFFFCC"><strong>&nbsp;</strong>分类标题9：</td>
-    <td height="23" colspan="2" valign="top" bgcolor="#FFFFCC"><input name="l_class9" type="radio" value="内容1" checked>
-        内容1
-        <input type="radio" name="l_class9" value="内容2">
-        内容2
-        <input type="radio" name="l_class9" value="内容3">
-        内容3
-        <input type="radio" name="l_class9" value="内容4">
-        内容4
-        <input type="radio" name="l_class9" value="内容5">
-        内容5
-        <input type="radio" name="l_class9" value="内容6">
-        内容6</td>
-</tr>
-<tr>
-    <td height="23" valign="top" bgcolor="#FFFFCC"><strong>&nbsp;</strong>分类标题10：</td>
-    <td height="23" colspan="2" valign="top" bgcolor="#FFFFCC"><input name="l_class10" type="radio" value="内容1" checked>
-        内容1
-        <input type="radio" name="l_class10" value="内容2">
-        内容2
-        <input type="radio" name="l_class10" value="内容3">
-        内容3
-        <input type="radio" name="l_class10" value="内容4">
-        内容4
-        <input type="radio" name="l_class10" value="内容5">
-        内容5
-        <input type="radio" name="l_class10" value="内容6">
-        内容6</td>
-</tr>
+@endif
+@endforeach
+
+
+
 <tr>
     <td height="46" bgcolor="F1F0F1">&nbsp;</td>
-    <td height="46" colspan="2" bgcolor="F1F0F1"> <input type="submit" name="Submit" value="添加">
-        <input type="button" name="Submit3" value="返回前页" onClick="location='pro_list.html'"></td>
+    <td height="46" colspan="2" bgcolor="F1F0F1">
+        <input type="button" name="Submit3" value="返回前页" onClick="location='pro_list.html?w_classid={{$w_classid}}&areaid={{$area->w_id}}&level=3&page={{$page}}'"></td>
 </tr>
 <tr>
     <td height="21" colspan="3" valign="top">&nbsp;</td>

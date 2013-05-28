@@ -1,56 +1,54 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Simply tell Laravel the HTTP verbs and URIs it should respond to. It is a
-| breeze to setup your application using Laravel's RESTful routing and it
-| is perfectly suited for building large applications and simple APIs.
-|
-| Let's respond to a simple GET request to http://example.com/hello:
-|
-|		Route::get('hello', function()
-|		{
-|			return 'Hello World!';
-|		});
-|
-| You can even respond to more than one URI:
-|
-|		Route::post(array('hello', 'world'), function()
-|		{
-|			return 'Hello World!';
-|		});
-|
-| It's easy to allow URI wildcards using (:num) or (:any):
-|
-|		Route::put('hello/(:any)', function($name)
-|		{
-|			return "Welcome, $name.";
-|		});
-|
-*/
-
 Route::get('/', function()
            {
                return View::make('home.index');
            });
-Route::get('authors', array('uses'=>'authors@index'));
 
-Route::get('admin',array('before' => 'auth','do'=> function(){ return View::make('admin.managelist');}));
-Route::get('manageleft', function(){ return View::make('admin.manageleft');});
-Route::get('managedetail', function(){ return View::make('admin.managedetail');});
+Route::get('admin.html',array('before' => 'auth','do'=> function(){ return View::make('admin.managelist');}));
+//Route::get('manageleft.html', function(){ return View::make('admin.manageleft');});
+Route::get('manageleft.html', 'users@manageleft');
+Route::get('managedetail.html', function(){ return View::make('admin.managedetail');});
 
-Route::get('login', function(){return View::make('admin.login');});
-Route::post('login', array('uses'=>'users@login'));
-Route::get('logout', function() {
+Route::get('login.html', function(){return View::make('admin.login');});
+Route::post('login.html', array('uses'=>'users@login'));
+Route::get('logout.html', function() {
     Auth::logout();
-    return Redirect::to('admin');
+    return Redirect::to('admin.html');
 });
 
 Route::group(array('before'=>'auth'),function(){
     Route::get('fileDel', 'utils@fileDel');
+    
+    /* user_login */
+    Route::get('login_user.html', 'users@list');
+    Route::get('login_user_modi.html', 'users@modi');
+    Route::post('login_user_modi.html', 'users@modi');
+    Route::get('user_list.html', 'users@user_list');
+    Route::get('user_add.html', 'users@user_add');
+    Route::post('user_add.html', 'users@user_add');
+    Route::any('user_del.html', 'users@user_del');
+    Route::get('user_modi.html', 'users@user_modi');
+    Route::post('user_modi.html', 'users@user_modi');
+
+    /* 权限管理 */
+    Route::get('qx_list.html', 'users@qx_list');
+    Route::post('qx_addclass.html', 'users@qx_addclass');
+    Route::post('qx_delclass.html', 'users@qx_delclass');
+    Route::get('qx_detail.html', 'users@qx_detail');
+    Route::post('qx_addsmallclass.html', 'users@qx_addsmallclass');
+    Route::post('qx_delsmallclass.html', 'users@qx_delsmallclass');
+
+    /* 栏目管理 */
+    Route::get('qxlm_list.html', 'users@qxlm_list');
+    Route::get('qxlm_addbig.html', 'users@qxlm_addbig');
+    Route::post('qxlm_addbig.html', 'users@qxlm_addbig');
+    Route::get('qxlm_addsmall.html', 'users@qxlm_addsmall');
+    Route::post('qxlm_addsmall.html', 'users@qxlm_addsmall');
+    Route::get('qxlm_modi.html', 'users@qxlm_modi');
+    Route::post('qxlm_modi.html', 'users@qxlm_modi');
+    Route::any('qxlm_del.html', 'users@qxlm_del');
+    
     /* area */
     Route::get('area/area_list.html', 'areas@list');
     Route::get('area/area_add.html', 'areas@add');
@@ -150,24 +148,40 @@ Route::group(array('before'=>'auth'),function(){
     Route::post('product/pro_modi.html', 'product@modi');
     Route::get('product/pro_detail.html', 'product@detail');
     Route::any('product/pro_del.html', 'product@del');
+    
+    Route::get('product/pro_pic_list.html', 'product@pic_list');
+    Route::get('product/pro_pic_add.html', 'product@pic_add');
+    Route::post('product/pro_pic_add.html', 'product@pic_add');
+    Route::get('product/pro_pic_modi.html', 'product@pic_modi');
+    Route::post('product/pro_pic_modi.html', 'product@pic_modi');
+    Route::get('product/pro_pic_detail.html', 'product@pic_detail');
+    Route::any('product/pro_pic_del.html', 'product@pic_del');
 
+    Route::any('product/package.html', 'product@package');
+    Route::any('product/package_list.html', 'product@package_list');
+    Route::any('product/package_modi.html', 'product@package_modi');
+    Route::any('product/package_del.html', 'product@package_del');
+    
+    
     /* 会员管理 */
     Route::get('member/member_door.html', 'member@door');
     Route::get('member/memberClass_List.html', 'member@class_list');
     Route::get('member/member_temp.html', 'member@temp');
     Route::get('member/memberClass_managelist.html', 'member@class_managelist');
-    Route::get('member/memberClass_add.html', 'member@class_add');
-    Route::post('member/memberClass_add.html', 'member@class_add');
-    Route::get('member/memberClass_modi.html', 'member@class_modi');
-    Route::post('member/memberClass_modi.html', 'member@class_modi');
-    Route::any('member/memberClass_del.html', 'member@class_del');
+    Route::get('member/top_member_list.html', 'member@top_member_list');
+    Route::get('member/top_member_add.html', 'member@top_member_add');
+    Route::post('member/top_member_add.html', 'member@top_member_add');
+    Route::get('member/top_member_detail.html', 'member@top_member_detail');
+    Route::get('member/top_member_modi.html', 'member@top_member_modi');
+    Route::post('member/top_member_modi.html', 'member@top_member_modi');
+    Route::get('member/top_member_pass_modi.html', 'member@top_member_pass_modi');
+    Route::any('member/top_member_del.html', 'member@top_member_del');
 
     Route::get('member/member_list.html', 'member@list');
     Route::get('member/member_add.html', 'member@add');
     Route::post('member/member_add.html', 'member@add');
     Route::get('member/member_modi.html', 'member@modi');
     Route::post('member/member_modi.html', 'member@modi');
-    Route::get('member/member_detail.html', 'member@detail');
     Route::any('member/member_del.html', 'member@del');
 
      /* 帮助 */
@@ -286,5 +300,5 @@ Route::filter('csrf', function()
 
 Route::filter('auth', function()
 {
-	if (Auth::guest()) return Redirect::to('login');
+	if (Auth::guest()) return Redirect::to('login.html');
 });

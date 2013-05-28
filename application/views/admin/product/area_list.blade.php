@@ -40,7 +40,7 @@ body {
      @foreach($areas as $area)
 
     <tr>
-      <td height="22" background="images/line-2.gif" bgcolor="#EEEEEE">&nbsp;<font color="#999999">■</font>&nbsp;<a href="proclass_list.html?areaid={{$area->w_id}}" target="_self">【{{$area->w_name}}】用户名用户名</a></td>
+      <td height="22" background="images/line-2.gif" bgcolor="#EEEEEE">&nbsp;<font color="#999999">■</font>&nbsp;<a href="proclass_list.html?areaid={{$area->w_id}}" target="_self">【{{$area->w_name}}】{{$area->username}}</a></td>
     </tr>
      @endforeach
     

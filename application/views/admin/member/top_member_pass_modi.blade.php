@@ -1,4 +1,3 @@
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -19,7 +18,7 @@
               <tr> 
                 <td height="21" bgcolor="#A24E12">&nbsp;<font color="#FFFFFF">修改密码</font></td>
                 <td width="531" height="21" bgcolor="#FFFFFF">&nbsp;</td>
-                <td width="106" bgcolor="#FFFFFF"><div align="center"><a href="top_member_list.html">返回前页</a></div></td>
+                <td width="106" bgcolor="#FFFFFF"><div align="center"><a href="top_member_list.html?page={{$page}}">返回前页</a></div></td>
               </tr>
               <tr> 
                 <td height="18" colspan="3"> <div align="right"></div></td>
@@ -30,7 +29,7 @@
               </tr>
               <tr>
                 <td valign="middle" bgcolor="#C8E3FF"><font size="2">&nbsp;会员密码:</font></td>
-                <td height="22" colspan="2" valign="middle" bgcolor="#C8E3FF"><input name="userpass" type="text" id="userpass" size="30" maxlength="20">
+                <td height="22" colspan="2" valign="middle" bgcolor="#C8E3FF"><input name="userpass" type="password" id="userpass" size="30" maxlength="20" value='{{$member->userpass}}'>
                   <font color="#FF0000">*</font></td>
               </tr>
               <tr>
@@ -40,8 +39,11 @@
               </tr>
               <tr> 
                 <td height="46" bgcolor="F1F0F1">&nbsp;</td>
-                <td height="46" colspan="2" bgcolor="F1F0F1"><input type="submit" name="Submit" value="修改">
-                  <input type="button" name="Submit3" value="返回前页" onClick="location='top_member_list.html'"></td>
+                <td height="46" colspan="2" bgcolor="F1F0F1">
+                  <input type="hidden" name="page" value="{{$page}}">
+                  <input type="hidden" name="id" value="{{$member->meid}}">
+                  <input type="submit" name="Submit" value="修改">
+                  <input type="button" name="Submit3" value="返回前页" onClick="location='top_member_list.html?page={{$page}}'"></td>
               </tr>
               <tr> 
                 <td height="21" colspan="3" valign="top">&nbsp;</td>

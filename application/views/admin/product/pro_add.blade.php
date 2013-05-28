@@ -14,19 +14,13 @@
     <script language="javascript">
         function CheckForm (frm)
         {
-
-
             if (frm.l_name.value.length==0)
             {
                 frm.l_name.focus();
                 frm.l_name.select();
                 alert ("请输入商品名称!");
                 return false;
-
             }
-
-
-
         }
     </script>
 </head>
@@ -125,7 +119,7 @@
     <td height="23" valign="top" bgcolor="#FFFFCC"><strong>&nbsp;</strong>{{$class_additional->l_name}}：</td>
     <td height="23" colspan="2" valign="top" bgcolor="#FFFFCC">
       @foreach($class_additional->value as $name)
-        <input type="radio" name="l_class1" value="{{$name->l_name}}">
+        <input type="radio" name="l_class{{$no++}}" value="{{$name->l_name}}">
         {{$name->l_name}}
       @endforeach
       </td>
